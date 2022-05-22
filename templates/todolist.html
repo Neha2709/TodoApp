@@ -33,9 +33,9 @@
               <button type="submit" class="form-outline mb-4 btn btn-primary btn-block mb-4">Add</button>
               </div>
               </form>
-    <div class="col-sm-9" style="background-color:aliceblue; overflow-y: scroll; height: 560px; ">
-      <form action="/filterByStatus/" method = "post">{% csrf_token %}
-        <div><select id="status" name="status" style="height: 5%; width: 15%;">
+    <div class="col-sm-9" style="background-color:aliceblue; overflow-y: scroll; height: 560px; text-transform: capitalize; ">
+      <br><br><form action="/filterByStatus/" method = "post">{% csrf_token %}
+        <div><select id="status" name="status" style="height: 5%; width: 35%;">
             <option value="Not started">Not started</option>
             <option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option>

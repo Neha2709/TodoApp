@@ -15,26 +15,40 @@ def todoappView(request):
     return render(request, 'todolist.html',{'all_items':all_items})
 
 def addTodoView(request):
+    if not get_referer(request):
+        return HttpResponseRedirect('/todoapp/') 
     x = request.POST['content']
     new_item = TodoItem(content = x, status = request.POST['status'], ETA = request.POST['ETA'])
     new_item.save()
     return HttpResponseRedirect('/todoapp/') 
 
 def deleteTodoView(request, i):
+    if not get_referer(request):
+        return HttpResponseRedirect('/todoapp/') 
     y = TodoItem.objects.get(id= i)
     y.delete()
     return HttpResponseRedirect('/todoapp/') 
 
 def changeStatus(request, i):
+    if not get_referer(request):
+        return HttpResponseRedirect('/todoapp/') 
     y = TodoItem.objects.get(id= i)
     y.status = request.POST['status']
     y.save()
     return HttpResponseRedirect('/todoapp/') 
 
 def filterByStatus(request):
+    if not get_referer(request):
+        return HttpResponseRedirect('/todoapp/') 
     x = request.POST['status']
     if(x=='Completed'):
         items = TodoItem.objects.filter(status=x).order_by('-ETA')
     else:
         items = TodoItem.objects.filter(status=x).order_by('ETA')
     return render(request, 'todolist.html',{'all_items':items})
+
+def get_referer(request):
+    referer = request.META.get('HTTP_REFERER')
+    if not referer:
+        return None
+    return referer
