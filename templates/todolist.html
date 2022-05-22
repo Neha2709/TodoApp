@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Tick It</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,9 +11,9 @@
 <body>
 
 <div class="container-fluid">
-  <div class="row" class="header" style="height: 100px; font-size: 60px; background-color: black; color: white;"> <center>My Tasks List</center> </div>
+  <div class="row" class="header" style="height: 100px; font-size: 60px; background-color: black; color: white;"> <center>Tick It</center> </div>
   <div class="row" style="padding-top: 3%">
-    <div class="col-sm-4" >
+    <div class="col-sm-3" >
       <form action="/addTodoItem/" method = "post">{% csrf_token %}
               <div class="form-outline mb-4">
                 Title : <input type="text" name="content" class="form-control" />
@@ -33,7 +33,7 @@
               <button type="submit" class="form-outline mb-4 btn btn-primary btn-block mb-4">Add</button>
               </div>
               </form>
-    <div class="col-sm-8" style="background-color:aliceblue; overflow-y: scroll; height: 560px; ">
+    <div class="col-sm-9" style="background-color:aliceblue; overflow-y: scroll; height: 560px; ">
       <form action="/filterByStatus/" method = "post">{% csrf_token %}
         <div><select id="status" name="status" style="height: 5%; width: 15%;">
             <option value="Not started">Not started</option>
