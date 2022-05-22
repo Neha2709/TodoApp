@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from .models import TodoItem
 from django.http import HttpResponseRedirect 
+from django.db.models import Q
+
 
 
 # Create your views here.
 def todoappView(request):
-    all_items = TodoItem.objects.all()
-    not_started_items = TodoItem.objects.all().filter(status='Not Started')
-    in_progress_items = TodoItem.objects.all().filter(status='In progress')
-    completed_items = TodoItem.objects.all().filter(status='Completed')
-    return render(request, 'todolist.html',{'not_started_items':not_started_items,'in_progress_items':in_progress_items,'completed_items':completed_items
-    ,'all_items':all_items})
+    # all_items = TodoItem.objects.all().filter(~Q(status='Completed'))
+    all_items = TodoItem.objects.filter(~Q(status='Completed')).order_by('ETA')
+    # not_started_items = TodoItem.objects.all().filter(status='Not Started')
+    # in_progress_items = TodoItem.objects.all().filter(status='In progress')
+    # completed_items = TodoItem.objects.all().filter(status='Completed')
+    return render(request, 'todolist.html',{'all_items':all_items})
 
 def addTodoView(request):
     x = request.POST['content']
@@ -31,5 +33,8 @@ def changeStatus(request, i):
 
 def filterByStatus(request):
     x = request.POST['status']
-    items = TodoItem.objects.all().filter(status=x)
+    if(x=='Completed'):
+        items = TodoItem.objects.filter(status=x).order_by('-ETA')
+    else:
+        items = TodoItem.objects.filter(status=x).order_by('ETA')
     return render(request, 'todolist.html',{'all_items':items})
