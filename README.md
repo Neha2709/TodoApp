@@ -51,7 +51,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:Neha2709/TodoApp.git
+   git clone git@github.com:NehaDadarwala/TodoApp.git
    ```
 3. Create virtual environment and activate it
    ```sh
@@ -79,6 +79,6 @@ This is an example of how to list things you need to use the software and how to
 
 Neha Dadarwala nehadadarwala@gmail.com
 
-Project Link: [https://github.com/Neha2709/TodoApp](https://github.com/Neha2709/TodoApp)
+Project Link: [https://github.com/NehaDadarwala/TodoApp](https://github.com/NehaDadarwala/TodoApp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
